@@ -7,11 +7,11 @@ module.exports = function () {
 
   return {
     files: [
-      {pattern: 'src/*.js', load: false}
+      { pattern: 'src/*.js', load: false }
     ],
 
     tests: [
-      {pattern: 'test/*Spec.js', load: false}
+      { pattern: 'test/*Spec.js', load: false }
     ],
 
     preprocessors: {
