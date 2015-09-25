@@ -22,7 +22,7 @@
   "devDependencies": {
     "babel": "^4.7.16",
     "chai": "^2.1.2",
-    "wallaby-webpack": "^0.0.3",
+    "wallaby-webpack": "^0.0.7",
     "webpack": "^1.7.3"
   }
 }
