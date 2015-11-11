@@ -1,9 +1,11 @@
-var babel = require('babel');
+'use strict';
+
+var babel = require('babel-core');
 var wallabyWebpack = require('wallaby-webpack');
 
 var webpackPostprocessor = wallabyWebpack({});
 
-module.exports = function () {
+module.exports = function (wallaby) {
 
   return {
     files: [
@@ -14,8 +16,8 @@ module.exports = function () {
       { pattern: 'test/*Spec.js', load: false }
     ],
 
-    preprocessors: {
-      '**/*.js': file => babel.transform(file.content, { sourceMap: true })
+    compilers: {
+      '**/*.js': wallaby.compilers.babel({ babel: babel, presets: ['es2015'] })
     },
 
     postprocessor: webpackPostprocessor,
