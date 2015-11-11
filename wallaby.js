@@ -1,7 +1,18 @@
-var babel = require('babel');
+'use strict';
+
 var wallabyWebpack = require('wallaby-webpack');
 
-var webpackPostprocessor = wallabyWebpack({});
+var webpackPostprocessor = wallabyWebpack({
+  module: {
+    loaders: [
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'babel?presets[]=es2015'
+      }
+    ]
+  }
+});
 
 module.exports = function () {
 
@@ -13,10 +24,6 @@ module.exports = function () {
     tests: [
       { pattern: 'test/*Spec.js', load: false }
     ],
-
-    preprocessors: {
-      '**/*.js': file => babel.transform(file.content, { sourceMap: true })
-    },
 
     postprocessor: webpackPostprocessor,
 
