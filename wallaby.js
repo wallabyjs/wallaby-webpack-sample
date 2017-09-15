@@ -1,12 +1,12 @@
-'use strict';
-
-var wallabyWebpack = require('wallaby-webpack');
-var webpackPostprocessor = wallabyWebpack({});
+const wallabyWebpack = require('wallaby-webpack');
+const webpackPostprocessor = wallabyWebpack({});
 
 module.exports = function (wallaby) {
 
   return {
     files: [
+      // loading chai globally
+      { pattern: 'node_modules/chai/chai.js', instrument: false },
       { pattern: 'src/**/*.js', load: false }
     ],
 
@@ -21,6 +21,7 @@ module.exports = function (wallaby) {
     postprocessor: webpackPostprocessor,
 
     setup: function () {
+      window.expect = chai.expect;
       window.__moduleBundler.loadTests();
     }
   };
